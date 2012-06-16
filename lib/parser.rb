@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 class Parser
   attr_reader :file
 
