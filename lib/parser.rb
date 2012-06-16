@@ -60,5 +60,5 @@ class Parser
   end
 end
 
-#p = Parser.new(File.expand_path("../../spec/fixtures/bankas_viss.px", __FILE__))
-#p.to_csv
+p = Parser.new(File.expand_path("../../spec/fixtures/bankas_viss.px", __FILE__))
+p.to_csv
