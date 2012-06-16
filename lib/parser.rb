@@ -1,16 +1,20 @@
 # encoding: utf-8
-require 'net/http'
-require 'uri'
+require 'open-uri'
 
 class Parser
   attr_reader :file
 
-  def initialize(file)
-    @file = file
+  def initialize(params)
+    @file = params[:file]
+    @url  = params[:url]
   end
   
   def content
-    File.open(@file, "r", :encoding => "windows-1257").read.encode("UTF-8")
+    if !@file.nil?
+      File.open(@file, "r", :encoding => "windows-1257").read.encode("UTF-8")
+    elsif !@url.nil?
+      open(@url).read.force_encoding("windows-1257").encode("UTF-8")
+    end
   end
 
   def header
@@ -60,5 +64,5 @@ class Parser
   end
 end
 
-p = Parser.new(File.expand_path("../../spec/fixtures/bankas_viss.px", __FILE__))
-p.to_csv
+#p = Parser.new(File.expand_path("../../spec/fixtures/bankas_viss.px", __FILE__))
+#p.to_csv
