@@ -1,7 +1,7 @@
 require_relative "../lib/parser"
 
 describe Parser do
-  it "yay" do
+  it "yoy" do
     true
   end
 end
