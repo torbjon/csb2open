@@ -6,4 +6,4 @@ Small parsing lib was born on [Open Data Latvia Hackathon](http://www.meetup.com
 #### Run Locally
 
   bundle install
-    ruby parse.rb >> file.csv
+  ruby parse.rb >> file.csv
