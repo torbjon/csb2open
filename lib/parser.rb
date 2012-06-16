@@ -1,5 +1,3 @@
-require "iconv"
-
 class Parser
   attr_reader :file
 
@@ -8,8 +6,6 @@ class Parser
   end
   
   def content
-    file = File.open(@file).read
-    x = ::Iconv.iconv("UTF-8", "latin1", file)
-    puts x 
+    File.open(@file, "r", :encoding => "windows-1257").read.encode("UTF-8")
   end
 end
