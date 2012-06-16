@@ -4,6 +4,7 @@ require_relative "../lib/parser"
 describe Parser do
   before do
     @file = File.expand_path("../fixtures/bankas_viss.px", __FILE__)
+    # @file = open("http://data.csb.gov.lv/DATABASE/ekfin/%C4%AAstermi%C5%86a%20statistikas%20dati/Banku%20r%C4%81d%C4%ABt%C4%81ji/BR0010m.px"
     @parser = Parser.new(@file)
   end
 

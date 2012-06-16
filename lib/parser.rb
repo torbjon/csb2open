@@ -1,4 +1,7 @@
 # encoding: utf-8
+require 'net/http'
+require 'uri'
+
 class Parser
   attr_reader :file
 
@@ -36,12 +39,9 @@ class Parser
   end
 
   def values
-    x = content.gsub("\n", "").gsub("\r", "")
-    x = x.split(";")
+    x = content.gsub("\n", "").gsub("\r", "").split(";")    
     values = []
-    x.each do |line|
-      values << line if line =~ /VALUES/
-    end
+    x.each { |line| values << line if line =~ /VALUES/ }
     values 
   end
 
@@ -51,13 +51,11 @@ class Parser
 
   def header_rest
     if values[1..-1].count >= 1
-      z = []
-      values[1].split("=")[1].split(",").each do |result|
-        values[-1].split("=")[1].split(",").each_with_index do |result2, idx|
-          z << "#{result.gsub('"', "")} #{result2.gsub('"', "")}"
+      values[1].split("=")[1].split(",").map do |result|
+        values[-1].split("=")[1].split(",").each_with_index.map do |result2, idx|
+          "#{result.gsub('"', "")} #{result2.gsub('"', "")}"
         end
-      end 
-      z.join(", ") 
+      end.join(", ") 
     end
   end
 end
