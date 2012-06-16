@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/sporkrb/spork.git
+  revision: a07c59d6652d81e8863b7ae5767e943fd272b5da
+  specs:
+    spork (1.0.0rc3)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -8,6 +14,9 @@ GEM
       thor (>= 0.14.6)
     guard-rspec (1.0.1)
       guard (>= 1.1)
+    guard-spork (1.0.0)
+      guard (>= 1.0.0)
+      spork (>= 0.8.4)
     listen (0.4.5)
       rb-fchange (~> 0.0.5)
       rb-fsevent (~> 0.9.1)
@@ -32,4 +41,6 @@ PLATFORMS
 
 DEPENDENCIES
   guard-rspec
+  guard-spork
   rspec
+  spork!
