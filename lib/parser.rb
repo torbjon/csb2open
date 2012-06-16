@@ -15,11 +15,9 @@ class Parser
   end
 
   def data
-    r = []
-    data_first.each_with_index do |data, idx| 
-      r << "#{data_first[idx]}, #{data_get[idx].strip.gsub(" ", ", ")}"
+    data_first.each_with_index.map do |data, idx| 
+      "#{data_first[idx]}, #{data_get[idx].strip.gsub(" ", ", ")}"
     end
-    r
   end
 
   def to_csv
