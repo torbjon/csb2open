@@ -1,9 +1,9 @@
 # encoding: utf-8
-require_relative "../lib/parser"
+require_relative "../../lib/parser"
 
 describe Parser do
   before do
-    @file   = File.expand_path("../fixtures/bankas_viss.px", __FILE__)
+    @file   = File.expand_path("../../fixtures/bankas_viss.px", __FILE__)
     @parser = Parser.new({:file => @file})
   end
 
