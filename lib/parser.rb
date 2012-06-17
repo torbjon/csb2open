@@ -2,8 +2,6 @@
 require 'open-uri'
 
 class Parser
-  attr_reader :file
-
   def initialize(params)
     @file = params[:file]
     @url  = params[:url]
