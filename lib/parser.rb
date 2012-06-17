@@ -34,19 +34,16 @@ class Parser
 
   private
 
-  def data_first(val = "")
+  def data_first
     values[0].split('=')[1].gsub('"', "").split(",")
   end
   
   def data_get
-    content.split("DATA=")[1].gsub(";", "").split("\r\n").reject {|x| x.empty?}
+    content.split("DATA=")[1].gsub(";", "").split("\r\n").reject(&:empty?) 
   end
 
   def values
-    x = content.gsub("\n", "").gsub("\r", "").split(";")    
-    values = []
-    x.each { |line| values << line if line =~ /VALUES/ }
-    values 
+    content.gsub(/\n|\r/, "").split(";").select { |line| line =~ /VALUES/ }
   end
 
   def header_first
