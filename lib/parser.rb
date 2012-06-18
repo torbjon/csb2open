@@ -49,12 +49,10 @@ class Parser
   end
 
   def header_rest
-    if values[1..-1].count >= 1
-      values[1].split("=")[1].split(",").map do |result|
-        values[-1].split("=")[1].split(",").each_with_index.map do |result2, idx|
-          "#{result.gsub('"', "")} #{result2.gsub('"', "")}"
-        end
-      end.join(", ") 
+    if values[1..-1].length == 2
+      first_part  = values[-2].split("=")[1].split(",")
+      second_part = values[-1].split("=")[1].split(",")
+      first_part.product(second_part).map { |part| part.join(" ").gsub('"', "") }.join(", ")
     end
   end
 end
