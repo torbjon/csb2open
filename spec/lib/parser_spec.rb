@@ -8,7 +8,7 @@ describe Parser do
   end
 
   it "expects input file" do
-    Parser.new({:file => "blabla"}).should_not raise_error(ArgumentError)
+    lambda { Parser.new }.should raise_error(ArgumentError)
   end
 
   describe ".content" do
